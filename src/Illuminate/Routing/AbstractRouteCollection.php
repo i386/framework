@@ -122,9 +122,9 @@ abstract class AbstractRouteCollection implements Countable, IteratorAggregate, 
         throw new MethodNotAllowedHttpException(
             $others,
             sprintf(
-                'The %s method is not supported for route %s. Supported methods: %s.',
-                $request->path(),
+                'The %s method is not supported for route matching path "%s". Supported methods: %s.',
                 $method,
+                $request->path(),
                 implode(', ', $others)
             )
         );
@@ -136,7 +136,8 @@ abstract class AbstractRouteCollection implements Countable, IteratorAggregate, 
      * @param  array  $others
      * @param  string  $method
      * @return void
-     * @deprecated use requestMethodNotAllowed
+     *
+     * @deprecated see requestMethodNotAllowed
      *
      * @throws \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException
      */
